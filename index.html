@@ -62,11 +62,12 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Sidebar has 2 components:-
+<li>Sidebar has 3 components:-
 
 <ul>
 <li>Slider: Receive input from user</li>
 <li>Table : Display % and number of rows in training/test data</li>
+<li>Button: A button named &quot;Run&quot; is provided to start the prediction process</li>
 </ul></li>
 <li>Main panel:-
 
@@ -117,14 +118,24 @@ print(d)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>When user changes the slider following 3 get updated:-
+<li>When user changes the slider following gets updated:-
+
+<ul>
+<li>Train/test size split table</li>
+</ul></li>
+<li>When user clicks Run, following gets updated:- 
 
 <ul>
 <li>age v/s wage plot </li>
 <li>RMSE table</li>
-<li>Train/test size split table</li>
 </ul></li>
-<li>Responsiveness: Depends on the performance of the RStudio shiny server</li>
+<li>Responsiveness
+
+<ul>
+<li>Adding of Run button was a conscious decision to maintain responsiveness</li>
+<li>As RStudio server can be slow, user needs to know then an action is being taken</li>
+<li>Other option was to reactively update plot when the slider is updated, but it was dropped.</li>
+</ul></li>
 </ul>
 
   </article>
@@ -137,9 +148,7 @@ print(d)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>If training size is too low, RMSE increases</li>
-<li>If training size is too high, RMSE increases if there is overfitting</li>
-<li>Need to find a perfect balance between training and test data sizes</li>
+<li>Need to have a good balance between training and test data sizes</li>
 </ul>
 
   </article>
