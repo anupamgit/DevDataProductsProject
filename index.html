@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products">
+  <meta name="author" content="Anupam">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products</h1>
+    <h2>Project</h2>
+    <p>Anupam<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Details</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Shiny app name: DevDataProductsProject</li>
+<li>Link: <a href="https://anupam.shinyapps.io/DevDataProductsProject/">https://anupam.shinyapps.io/DevDataProductsProject/</a></li>
+<li>Idea: Shows how training dataset size impacts a prediction model.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>App UI</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Sidebar has 3 components:-
+
+<ul>
+<li>Slider: Receive input from user</li>
+<li>Table : Display % and number of rows in training/test data</li>
+<li>Button: A button named &quot;Run&quot; is provided to start the prediction process</li>
+</ul></li>
+<li>Main panel:-
+
+<ul>
+<li>Plot: Shows age v/s wage in Wage dataset(IRIS)</li>
+<li>Table: Shows Root mean squared error(RMSE) for the model</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>App Server</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Process input:-
+
+<ul>
+<li>Read %, partition data, train model and predict on test data</li>
+<li>Generate plot: age v/s wage</li>
+</ul></li>
+<li>Generate table with RMSE information</li>
+<li>Generate table for train and test data split sizes (E.g. below)</li>
+</ul>
+
+<pre><code class="r">d &lt;- data.frame(c(0.5, 0.5), c(1500, 1500))
+colnames(d) &lt;- c(&quot;Percentage(%)&quot;, &quot;Number of rows(#)&quot;)
+rownames(d) &lt;- c(&quot;Training data&quot;, &quot;Test data&quot;)
+print(d)
+</code></pre>
+
+<pre><code>##               Percentage(%) Number of rows(#)
+## Training data           0.5              1500
+## Test data               0.5              1500
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Functionality</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>When user changes the slider following gets updated:-
+
+<ul>
+<li>Train/test size split table</li>
+</ul></li>
+<li>When user clicks Run, following gets updated:- 
+
+<ul>
+<li>age v/s wage plot </li>
+<li>RMSE table</li>
+</ul></li>
+<li>Responsiveness
+
+<ul>
+<li>Adding of Run button was a conscious decision to maintain responsiveness</li>
+<li>As RStudio server can be slow, user needs to know then an action is being taken</li>
+<li>Other option was to reactively update plot when the slider is updated, but it was dropped.</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Conclusion</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Need to have a good balance between training and test data sizes</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Details'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='App UI'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='App Server'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Functionality'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Conclusion'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
